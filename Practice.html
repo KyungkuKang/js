@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function func1(){
+            let div1 = document.getElementById("div1")
+            div1.innerHTML = "은실이"
+            div1.style.backgroundColor = "blue"
+            div1.style.color = "white"
+            div1.style.width = "150px"
+            div1.style.border = "0px solid aqua";
+        }
+        function func2(){
+            let div1 = document.getElementById("div1")
+            div1.innerHTML = "박명수"
+            div1.style.backgroundColor = "red";
+            div1.style.color = "black"
+            div1.style.width = "150px"
+            div1.style.border = "5px solid aqua";
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">홍길동</div>
+    <button onclick="func1()">변경</button>
+    <button onclick="func2()">되돌리기</button>
+    
+</body>
+</html>
