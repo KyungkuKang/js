@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="quiz03.js"></script>
+    <script>
+        
+        let bool = true;
+        function change(){
+            console.log( bool )
+            console.log( !bool )
+            let div = document.getElementById("div1");
+            let btn = document.getElementById("btn");
+            let color = ( bool ) ? "back" : "";
+            let msg = ( bool ) ? "되돌리기" : "변경";
+
+            div.className = color
+            btn.innerHTML = msg
+            bool = !bool
+        }
+        let size = 15;
+        function plus(){
+            size += 3;
+            let div = document.getElementById("div1")
+            div.style.fontSize = size+"px";
+        }    
+        function minus(){
+            size = size -3;
+            let div = document.getElementById("div1");
+            div.style.fontSize = size+"px"
+        }
+        let x = 1;
+        function prev(){
+            x = ( x == 1 ) ? 8 : x - 1;
+            //x = x - 1;
+            let img = document.getElementById("pic")
+            img.src = "images/최근상품0" + x +".jpg"
+        }
+        function next(){
+            // 9번 없음
+            x = ( x == 8 )? 1 : x + 1
+            //x = x + 1 ;
+            let img = document.getElementById("pic")
+            img.src = "images/최근상품0" + x + ".jpg"
+        }
+
+      /*  let index = 1; // 현재 이미지 번호 (01부터 시작)
+const max = 8;
+
+function prev() {
+    index--;
+    if (index < 1) {
+        index = max; // 1보다 작아지면 8로
+    }
+    changeImage();
+}
+
+function next() {
+    index++;
+    if (index > max) {
+        index = 1; // 8보다 커지면 1로
+    }
+    changeImage();
+}
+
+function changeImage() {
+    let img = document.getElementById("pic");
+    img.src = `images/최근상품0${index}.jpg`;
+}
+*/
+    </script>
+    <style>
+        .back { background-color:  gold;}
+        #wrap {width: 150px; height: 150px; text-align: center;}
+        #pic {width: 150%;height: 150px;}
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+        <img src="images/최근상품01.jpg" id="pic">
+        <input type="button" value="이전사진" onclick="prev()">
+        <input type="button" value="다음사진" onclick="next()">
+    </div>
+    
+
+    <div id="div1">div</div>
+    <button onclick="change()" id="btn">변경</button>
+    <hr>
+    <button onclick="plus()" id="btn">+</button>
+    <button onclick="minus()" id="btn">-</button>
+</body>
+</html>
