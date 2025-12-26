@@ -12,7 +12,58 @@
         }
     </style>
     <script>
-        function trFunc(tr){ console.log( tr ); tr.style.backgroundColor = "gold"; } //const trFunc = (tr) => {}
+        let preId = 0;
+        let newId = 0;
+        function trFunc(tr){
+            if( tr.style.backgroundColor == ""){
+                tr.style.backgroundColor = "gold"
+                if( preId == 0 )
+                    preId = tr.id;
+                else
+                    newId = tr.id;
+            }else{
+                tr.style.backgroundColor = ""
+                preId = 0
+            
+            }
+            if( newId != 0 ){
+                console.log("둘다 선택 시 실행")
+                document.getElementById(preId).style.backgroundColor=""
+                preId = newId
+                newId = 0
+            }
+
+
+        /*
+        let preId = 0;
+        let newId = 0;
+        function trFunc(tr){ 
+            if( tr.style.backgroundColor == "" ){
+                tr.style.backgroundColor = "gold"
+                if( preId == 0 )
+                    preId = tr.id;
+                else
+                    newId = tr.id;
+                //console.log("preId")
+            }else{
+                tr.style.backgroundColor = ""
+                preId = 0
+            }
+            if( newId != 0 ){
+                console.log("둘다 선택 시 실행")
+                document.getElementById( preId ).style.backgroundColor=""
+                preId = newId
+                newId = 0
+            }
+        */
+            //tr.style.backgroundColor = "gold";
+                      
+             
+            /*
+            console.log(tr.style.backgroundColor != "")
+            */
+            }  
+         //const trFunc = (tr) => {}
     </script>
 </head>
 <body>
