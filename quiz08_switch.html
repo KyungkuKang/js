@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>스페이스바 이동 게임</title>
+<style>
+    #wrap{ width: 500px; border: 1px solid; overflow: hidden; position: relative; }
+    #pic {width: 100px; height: 100px; display: block; margin-left: 0px;}
+</style>
+</head>
+<body onload="init()">
+
+<div id="wrap">
+    <div id="txt" style="margin-left: 100px;">READY</div>
+    <hr>
+    <img id="pic" src="images/jol01.png">
+</div>
+
+<script>
+let pic, txt;
+let marginLeft = 0;
+let startTime = null;
+let gameOver = false;
+
+function init() {
+    pic = document.getElementById("pic");
+    txt = document.getElementById("txt");
+    document.addEventListener("keydown", kDown);
+}
+
+function kDown(event) {
+    if(gameOver) return; // 게임 종료 후 키 입력 무시
+
+    switch(event.code) {
+        case "Space":
+            // 스페이스바 처음 눌렀을 때 START로 변경 및 시간 기록
+            if(startTime === null) {
+                startTime = new Date().getTime();
+                txt.textContent = "START";
+                pic.src = "images/jol02.png";
+            }
+
+            // 이미지 오른쪽으로 이동
+            marginLeft += 5;
+
+            // wrap 너비와 pic 너비 기준으로 끝 도달 체크
+            const wrapWidth = document.getElementById("wrap").clientWidth;
+            const picWidth = pic.clientWidth;
+
+            if(marginLeft > wrapWidth - picWidth) {
+                marginLeft = wrapWidth - picWidth;
+                gameOver = true; // 종료
+                const endTime = new Date().getTime();
+                const elapsed = ((endTime - startTime)/1000).toFixed(2);
+                txt.textContent = "종료! 걸린 시간: " + elapsed + "초";
+                pic.src = "images/jol03.png";
+            }
+
+            pic.style.marginLeft = marginLeft + "px";
+            break;
+    }
+}
+</script>
+
+</body>
+</html>
