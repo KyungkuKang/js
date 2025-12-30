@@ -16,7 +16,7 @@
           let user = userInfo.filter( (u) => ( u.id === username ) ? u : undefined )
           console.log( user )
           if( user.length != 0 ){
-              table.style.backgroundColor = "aqua"
+              
               document.getElementById("table").innerHTML = `
                 아이디 : ${user[0]["id"]}<br>
                 이름 : ${user[0]["name"]}<br>
